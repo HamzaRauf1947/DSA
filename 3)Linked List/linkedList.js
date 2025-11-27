@@ -75,6 +75,64 @@ class LinkedList {
     return newNode;
   }
 
+
+  shift() {
+    if (this.head) {
+      let temp = this.head;
+      this.head = temp.next;
+      // temp.next = null
+      this.length--;
+      return temp;
+    }
+    return undefined;
+  }
+
+
+   getFirst() {
+    return this.head;
+  }
+
+  getLast() {
+    return this.tail;
+  }
+
+  get(index) {
+    let ind = Number(index);
+    if (typeof ind == "number") {
+      if (this.head) {
+        let temp = this.head;
+        if (ind > this.length - 1) return "your index doesn't exist";
+
+        for (let i = 0; i <= ind; i++) {
+          if (i == ind) {
+            return temp;
+          }
+          temp = temp.next;
+        }
+      }
+      return undefined;
+    }
+  }
+
+  set(index, val) {
+    let ind = Number(index);
+    if (typeof ind == "number") {
+      if (this.head) {
+        let temp = this.head;
+        if (ind > this.length - 1) return "your index doesn't exist";
+
+        for (let i = 0; i <= ind; i++) {
+          if (i == ind) {
+            temp.value = val;
+            return temp;
+          }
+          temp = temp.next;
+        }
+      }
+      return undefined;
+    }
+  }
+
  
 }
 
