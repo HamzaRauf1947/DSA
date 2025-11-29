@@ -75,7 +75,6 @@ class LinkedList {
     return newNode;
   }
 
-
   shift() {
     if (this.head) {
       let temp = this.head;
@@ -87,8 +86,7 @@ class LinkedList {
     return undefined;
   }
 
-
-   getFirst() {
+  getFirst() {
     return this.head;
   }
 
@@ -133,19 +131,51 @@ class LinkedList {
     }
   }
 
- 
+  prev(index) {
+    let temp = this.head;
+    for (let i = 0; i < index; i++) {
+      if (i == index - 1) {
+        return temp;
+      }
+      temp = temp.next;
+    }
+  }
+
+  insert(index, value) {
+    let newNode = new Node(value);
+
+    if (index === 0) {
+      return this.unshift(value);
+    }
+    if (index === this.length) {
+      return this.push(value);
+    }
+    let prevNode = this.prev(index);
+    let nextNode = prevNode.next;
+
+    prevNode.next = newNode;
+    newNode.next = nextNode;
+
+    this.length++;
+    return true;
+  }
+
+   size(){
+   let temp = this.head;
+   let count = 0
+    while (temp) {
+      count++;
+      temp = temp.next;
+    }
+
+    return count;
+  }
 }
 
 const myLinkList = new LinkedList(0);
-
 
 myLinkList.push(1);
 myLinkList.push(2);
 myLinkList.push(3);
 myLinkList.push(4);
 myLinkList.print();
-
-
-
-
-
