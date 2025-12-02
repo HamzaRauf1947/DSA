@@ -62,6 +62,33 @@ class DoublyLinkedList {
         return temp
 
     }
+        shift(){
+        if(this.lenght==0){
+            return undefined;
+        }
+        if(this.lenght == 1){
+            this.head = null;
+            this.tail = null;
+        }
+
+        let temp = this.head;
+        this.head = temp.next;
+        this.head.prev = null;
+        temp.next = null;
+        this.lenght--;
+        return temp;
+    }
+
+    print(){
+        let temp = this.head;
+        let res = "";
+        while(temp){
+            res += (temp.prev?"":"null<-")+" "+temp.value+" "+(temp.next?"<->":"->null ");
+            temp = temp.next
+        }
+        console.log(res);
+        
+    }
 }
 
 const DLL = new DoublyLinkedList(0);
