@@ -35,8 +35,26 @@ class stack {
     console.log(res);
   }
 
-  
+   pop() {
+    if (!this.first) return "list is empty";
+    let temp = this.first;
+    if (this.length === 1) {
+      temp.next = null;
+    } else {
+      this.first = temp.next;
+      temp.next = null;
+    }
+    this.length--;
+    return temp;
+  }
+
+
 }
 
 let theStack = new stack(0);
-console.log(theStack);
+console.log(theStack.push(1));
+console.log(theStack.push(2));
+console.log(theStack.print());
+console.log("p2", theStack.pop());
+console.log(theStack.print());
+;
