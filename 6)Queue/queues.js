@@ -41,6 +41,16 @@ class Queue {
     this.length--;
     return temp;
   }
+
+  min() {
+    let temp = this.first;
+    let min = temp.value;
+    while (temp) {
+      if (temp.value < min) min = temp.value;
+      temp = temp.next;
+    }
+    return min;
+  }
 }
 
 const queue = new Queue(0);
